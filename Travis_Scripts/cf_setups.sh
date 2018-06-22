@@ -14,14 +14,14 @@ sudo apt-get install cf-cli
 
 echo $CF_APP
 echo $CF_API 
-echo $CF_ORGANIZATION
+echo $CF_ORG
 echo $CF_SPACE
 echo $CF_USERNAME
 echo $CF_PASSWORD
 
 cf api $CF_API
 
-cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORGANIZATION -s $CF_SPACE
+cf login -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s $CF_SPACE
 
 BLUE=${CF_APP}
 GREEN="${BLUE}-G"

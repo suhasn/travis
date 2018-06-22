@@ -61,10 +61,10 @@ echo "wget --spider -S ${url} 2>&1 | grep "HTTP/" | awk '{print \$2}'"
 test=$(wget --spider -S ${url} 2>&1 | grep "HTTP/" | awk '{print $2}')
 echo ${test}
 
-if [ "${test}" == "200" ]; then
+if [ "${test}" == "1200" ]; then
    echo "You rock"
 else
-   echo "Fail here"
+   on_fail()
 fi
 
 

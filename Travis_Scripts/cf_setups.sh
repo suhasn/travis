@@ -53,15 +53,18 @@ DOMAIN="cfapps.eu10.hana.ondemand.com"
 cf push -f $MANIFEST
 
 url="\"https://${GREEN}.${DOMAIN}\""
-echo "curl --fail -I -k ${url}"
 
 tmpfile=$(mktemp /tmp/foo.XXXXXXXXXX)
 
 wget -q  -O /tmp/foo.XXXXXXXXXX ${url} | grep '200' /tmp/foo.XXXXXXXXXX | wc -l
 
+echo "`cat /tmp/foo.XXXXXXXXXX`"
+
 foo="`cat /tmp/foo.XXXXXXXXXX`"
 
-if [foo eq 1]; then
+echo ${foo}
+
+if [ ${foo} eq "1" ]; then
    echo "You rock"
 fi
 

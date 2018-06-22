@@ -53,7 +53,9 @@ DOMAIN="cfapps.eu10.hana.ondemand.com"
 cf push -f $MANIFEST
 
 url="\"https://${GREEN}.${DOMAIN}\""
-echo $url
+echo "curl --fail -I -k ${url}"
+
+sudo apt-get install curl
 
 curl --fail -I -k ${url}
 

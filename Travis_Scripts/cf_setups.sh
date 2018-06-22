@@ -56,7 +56,7 @@ url="\"https://${GREEN}.${DOMAIN}\""
 
 echo "I am here"
 
-echo $(wget --spider -S ${url} 2>&1 | grep "HTTP/" | awk '{print $2}')
+echo "wget --spider -S ${url} 2>&1 | grep "HTTP/" | awk '{print $2}'"
 
 test=$(wget --spider -S ${url} 2>&1 | grep "HTTP/" | awk '{print $2}')
 

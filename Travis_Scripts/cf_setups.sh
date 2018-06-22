@@ -54,18 +54,14 @@ cf push -f $MANIFEST
 
 url="\"https://${GREEN}.${DOMAIN}\""
 
-tmpfile=$(mktemp /tmp/foo.XXXXXXXXXX)
+test=$(wget --spider -S ${url} 2>&1 | grep "HTTP/" | awk '{print $2}')
 
-wget -q  -O /tmp/foo.XXXXXXXXXX ${url} | grep '200' /tmp/foo.XXXXXXXXXX | wc -l
+echo ${test}
 
-echo "`cat /tmp/foo.XXXXXXXXXX`"
-
-foo="`cat /tmp/foo.XXXXXXXXXX`"
-
-echo ${foo}
-
-if [ ${foo} eq "1" ]; then
+if [ ${test} = "200" ]; then
    echo "You rock"
+else
+   echo "Fail here"
 fi
 
 

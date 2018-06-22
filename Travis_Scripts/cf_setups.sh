@@ -55,9 +55,8 @@ cf push -f $MANIFEST
 url="\"https://${GREEN}.${DOMAIN}\""
 echo "curl --fail -I -k ${url}"
 
-sudo apt-get install curl
+wget -q  -O /tmp/foo ${url} | grep '200' /tmp/foo | wc -l
 
-curl --fail -I -k ${url}
 
 cf routes | tail -n +4 | grep $BLUE | awk '{print $3" -n "$2}' | xargs -n 3 cf map-route $GREEN
 

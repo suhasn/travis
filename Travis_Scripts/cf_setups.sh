@@ -61,10 +61,11 @@ echo "wget --spider -S ${url} 2>&1 | grep "HTTP/" | awk '{print \$2}'"
 test=$(wget --spider -S ${url} 2>&1 | grep "HTTP/" | awk '{print $2}')
 echo ${test}
 
-if [ "${test}" == "1200" ]; then
-   echo "You rock"
+if [ "${test}" == "200" ]; then
+   echo "You rock!! The new code deployment is successful. Performing the Blue Green deployment.. "
 else
    on_fail
+   exit 1
 fi
 
 

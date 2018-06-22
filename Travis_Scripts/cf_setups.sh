@@ -55,7 +55,15 @@ cf push -f $MANIFEST
 url="\"https://${GREEN}.${DOMAIN}\""
 echo "curl --fail -I -k ${url}"
 
-wget -q  -O /tmp/foo ${url} | grep '200' /tmp/foo | wc -l
+tmpfile=$(mktemp /tmp/foo.XXXXXXXXXX)
+
+wget -q  -O /tmp/foo.XXXXXXXXXX ${url} | grep '200' /tmp/foo.XXXXXXXXXX | wc -l
+
+foo="`cat /tmp/foo.XXXXXXXXXX`"
+
+if [foo eq 1]; then
+   echo "You rock"
+fi
 
 
 cf routes | tail -n +4 | grep $BLUE | awk '{print $3" -n "$2}' | xargs -n 3 cf map-route $GREEN

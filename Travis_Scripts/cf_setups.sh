@@ -64,7 +64,7 @@ echo ${test}
 if [ "${test}" == "1200" ]; then
    echo "You rock"
 else
-   on_fail();
+   on_fail
 fi
 
 

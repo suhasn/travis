@@ -55,6 +55,8 @@ cf push -f $MANIFEST
 url="\"https://${GREEN}.${DOMAIN}\""
 echo $url
 
+curl --fail -I -k url
+
 cf routes | tail -n +4 | grep $BLUE | awk '{print $3" -n "$2}' | xargs -n 3 cf map-route $GREEN
 
 cf delete $BLUE -f

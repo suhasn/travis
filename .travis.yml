@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - stable
+before_install:
+  - chmod +x ./Travis_Scripts/cf_setups.sh
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install g++-4.8
+sudo: required
+env:
+   global:
+   - CXX=g++-4.8
+   - CF_API=$CF_API  
+   - CF_USERNAME=$CF_USERNAME
+   - CF_PASSWORD=$CF_PASSWORD
+   - CF_ORG=$CF_ORG
+   - CF_SPACE=$CF_SPACE
+   - CF_APP=$CF_APP
+script: ./Travis_Scripts/cf_setups.sh CF_APP 

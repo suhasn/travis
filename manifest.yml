@@ -1,0 +1,5 @@
+---
+applications:
+- name: helloworldi048564
+  buildpack: nodejs_buildpack
+  memory: 128M

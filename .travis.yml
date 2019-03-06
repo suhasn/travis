@@ -5,7 +5,7 @@ notifications:
   email:
     recipients:
       - Hariprasauth.R@sap.com
-      - steve.letford@sap.com
+      - suhas.narasimhan@sap.com
     on_success: always
     on_failure: always 
 before_install:
